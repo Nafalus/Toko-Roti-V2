@@ -52,21 +52,28 @@
 
   <script>
     function initMap() {
-      // Koordinat toko
-      const tokoLocation = { lat: -7.286610, lng: 112.781532 };
-      // Membuat map
-      const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: tokoLocation,
+      const tokoLocations = [
+        { lat: -7.286587, lng: 112.781530, title: "Toko Surabaya" },
+        { lat: -7.797068, lng: 110.370529, title: "Toko Yogyakarta" },
+        { lat: -6.208763, lng: 106.845599, title: "Toko Jakarta" },
+        { lat: -8.670458, lng: 115.212629, title: "Toko Bali" },
+      ];
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: tokoLocations[0],
       });
-      // Menambahkan marker
-      const marker = new google.maps.Marker({
-        position: tokoLocation,
-        map: map,
-        title: "Toko Kami",
+
+      tokoLocations.forEach((location) => {
+        new google.maps.Marker({
+          position: { lat: location.lat, lng: location.lng },
+          map: map,
+          title: location.title,
+        });
       });
     }
   </script>
+
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmp_hSrcaIL4AU-WfruH57C_NgjuL41fA&callback=initMap"></script>
 </body>
 
